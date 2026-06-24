@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sua empresa tem o perfil LUSH? — LUSH.</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --roxo: #9210FF;
+  --roxo-deep: #6a0bbf;
+  --verde: #b0f800;
+  --acai: #5A4685;
+  --profundo: #090418;
+  --preto: #000000;
+  --branco: #FDFDFD;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--profundo);
+  color: var(--branco);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 16px 80px;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* GRAIN TEXTURE */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  opacity: 0.025;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* BLOBS */
+.blob { position: fixed; border-radius: 50%; filter: blur(100px); pointer-events: none; z-index: 0; }
+.blob-1 { width: 500px; height: 500px; background: var(--roxo); opacity: 0.12; top: -150px; right: -150px; }
+.blob-2 { width: 300px; height: 300px; background: var(--verde); opacity: 0.08; bottom: 100px; left: -100px; }
+.blob-3 { width: 200px; height: 200px; background: var(--acai); opacity: 0.15; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+
+/* WRAPPER */
+.wrapper {
+  width: 100%;
+  max-width: 580px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 48px 0 40px;
+  text-align: center;
+  position: relative;
+}
+
+.logo {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 38px;
+  color: var(--branco);
+  letter-spacing: -0.01em;
+  margin-bottom: 32px;
+  display: inline-block;
+}
+.logo .dot { color: var(--roxo); }
+
+/* HEADLINE BLOCK — estilo poster */
+.headline-block {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.headline-eyebrow {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(253,253,253,0.45);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  font-style: italic;
+}
+
+.headline-main {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: clamp(36px, 9vw, 58px);
+  line-height: 0.95;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  position: relative;
+  display: inline-block;
+}
+
+/* HIGHLIGHT BAR — referência visual da imagem 2 */
+.hl-bar {
+  background: var(--roxo);
+  color: var(--branco);
+  display: inline;
+  padding: 2px 8px;
+  line-height: 1.05;
+}
+
+.hl-verde {
+  color: var(--verde);
+}
+
+.headline-sub {
+  font-size: 14px;
+  color: rgba(253,253,253,0.45);
+  line-height: 1.7;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* INTRO CARD */
+.intro-card {
+  background: rgba(146,16,255,0.08);
+  border: 1px solid rgba(146,16,255,0.25);
+  border-left: 3px solid var(--roxo);
+  border-radius: 12px;
+  padding: 20px 22px;
+  margin-bottom: 28px;
+  text-align: left;
+}
+
+.intro-card p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(253,253,253,0.7);
+}
+
+.intro-card strong {
+  color: var(--branco);
+  font-weight: 600;
+}
+
+/* ===== FORM CARD ===== */
+.form-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  padding: 32px 28px;
+  backdrop-filter: blur(16px);
+}
+
+/* PROGRESS */
+.progress-wrap { margin-bottom: 30px; }
+
+.progress-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.progress-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--verde);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.progress-counter { font-size: 12px; color: rgba(253,253,253,0.35); }
+
+.progress-track {
+  height: 4px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--roxo), var(--verde));
+  border-radius: 2px;
+  transition: width 0.45s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* STEP */
+.step { display: none; }
+.step.active { display: block; animation: fadeUp 0.3s ease; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* STEP NUMBER */
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  background: var(--roxo);
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 13px;
+  color: var(--branco);
+  margin-bottom: 12px;
+}
+
+.step-question {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 800;
+  font-size: 19px;
+  color: var(--branco);
+  line-height: 1.3;
+  margin-bottom: 6px;
+}
+
+.step-sub {
+  font-size: 13px;
+  color: rgba(253,253,253,0.38);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+/* OPTIONS */
+.options { display: flex; flex-direction: column; gap: 9px; }
+
+.opt {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 15px;
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.02);
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.opt::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(146,16,255,0.08), transparent);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.opt:hover { border-color: rgba(146,16,255,0.45); transform: translateY(-1px); }
+.opt:hover::before { opacity: 1; }
+
+.opt.selected {
+  border-color: var(--roxo);
+  background: rgba(146,16,255,0.12);
+}
+.opt.selected::before { opacity: 1; }
+
+.opt-check {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+  border: 2px solid rgba(255,255,255,0.18);
+  flex-shrink: 0;
+  margin-top: 1px;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.opt.selected .opt-check {
+  border-color: var(--roxo);
+  background: var(--roxo);
+}
+
+.opt.selected .opt-check::after {
+  content: '';
+  width: 5px;
+  height: 9px;
+  border: 2px solid white;
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translateY(-1px);
+  display: block;
+}
+
+.opt-body { position: relative; z-index: 1; flex: 1; }
+
+.opt-title {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--branco);
+  line-height: 1.3;
+}
+
+/* SCORE PILL */
+.score-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-top: 4px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.score-5 { background: rgba(176,248,0,0.12); color: var(--verde); border: 1px solid rgba(176,248,0,0.25); }
+.score-3 { background: rgba(146,16,255,0.12); color: #c96fff; border: 1px solid rgba(146,16,255,0.25); }
+.score-1 { background: rgba(255,255,255,0.05); color: rgba(253,253,253,0.35); border: 1px solid rgba(255,255,255,0.08); }
+
+/* NAV */
+.nav { display: flex; gap: 10px; margin-top: 22px; }
+
+.btn-back {
+  font-size: 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  color: rgba(253,253,253,0.38);
+  background: transparent;
+  border: 1.5px solid rgba(255,255,255,0.08);
+  border-radius: 8px;
+  padding: 10px 18px;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.btn-back:hover { border-color: rgba(255,255,255,0.22); color: var(--branco); }
+
+.btn-next {
+  flex: 1;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  color: var(--profundo);
+  background: var(--verde);
+  border: none;
+  border-radius: 8px;
+  padding: 11px 24px;
+  cursor: pointer;
+  opacity: 0.28;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.1s;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.btn-next.ready { opacity: 1; pointer-events: auto; }
+.btn-next.ready:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-next.ready:active { transform: scale(0.98); }
+
+/* ===== RESULT ===== */
+.result-screen { display: none; }
+.result-screen.active { display: block; animation: fadeUp 0.4s ease; }
+
+/* RESULT HERO */
+.result-hero {
+  text-align: center;
+  padding: 8px 0 28px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 28px;
+}
+
+.result-score-ring {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto 18px;
+  position: relative;
+}
+
+.result-score-ring svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.ring-bg { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 4; }
+.ring-fill { fill: none; stroke-width: 4; stroke-linecap: round; transition: stroke-dashoffset 1s cubic-bezier(0.4,0,0.2,1); }
+
+.score-number {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+.score-max {
+  font-size: 11px;
+  color: rgba(253,253,253,0.38);
+  position: relative;
+  z-index: 1;
+}
+
+.result-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 4px;
+  margin-bottom: 14px;
+}
+.tag-green { background: var(--verde); color: var(--profundo); }
+.tag-purple { background: var(--roxo); color: var(--branco); }
+.tag-gray { background: rgba(255,255,255,0.08); color: rgba(253,253,253,0.5); }
+
+.result-title {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 900;
+  font-size: clamp(20px, 5vw, 26px);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.result-msg {
+  font-size: 14px;
+  color: rgba(253,253,253,0.55);
+  line-height: 1.75;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* NEXT STEPS BLOCK */
+.next-block {
+  border-radius: 14px;
+  padding: 22px;
+  margin-bottom: 20px;
+}
+.next-block-a { background: rgba(176,248,0,0.06); border: 1px solid rgba(176,248,0,0.18); }
+.next-block-b { background: rgba(146,16,255,0.08); border: 1px solid rgba(146,16,255,0.2); }
+.next-block-c { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); }
+
+.next-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: rgba(253,253,253,0.35);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+
+.next-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(253,253,253,0.7);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+.next-item:last-child { margin-bottom: 0; }
+
+.next-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+.icon-green { background: var(--verde); color: var(--profundo); }
+.icon-purple { background: var(--roxo); color: var(--branco); }
+.icon-gray { background: rgba(255,255,255,0.08); color: rgba(253,253,253,0.45); }
+
+/* CTA */
+.cta-btn {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 8px;
+  padding: 15px 24px;
+  font-size: 15px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: opacity 0.2s, transform 0.1s;
+  margin-bottom: 10px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+.cta-primary { background: var(--roxo); color: var(--branco); }
+.cta-secondary-btn { background: rgba(255,255,255,0.06); color: rgba(253,253,253,0.6); border: 1px solid rgba(255,255,255,0.1) !important; font-size: 13px !important; padding: 12px 24px !important; }
+.cta-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.cta-btn:active { transform: scale(0.98); }
+
+.cta-note {
+  font-size: 12px;
+  color: rgba(253,253,253,0.25);
+  text-align: center;
+  line-height: 1.6;
+  margin-top: 10px;
+}
+
+/* FOOTER */
+.site-footer {
+  margin-top: 28px;
+  font-size: 12px;
+  color: rgba(253,253,253,0.18);
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* DIVIDER */
+.divider { height: 1px; background: rgba(255,255,255,0.06); margin: 20px 0; }
+
+/* POSTER ACCENT — linha decorativa no topo do card */
+.card-accent {
+  height: 3px;
+  background: linear-gradient(90deg, var(--roxo), var(--verde), transparent);
+  border-radius: 20px 20px 0 0;
+  margin: -32px -28px 28px;
+}
+
+@media (max-width: 480px) {
+  .form-card { padding: 24px 18px; }
+  .card-accent { margin: -24px -18px 24px; }
+  .logo { font-size: 32px; }
+  .headline-main { font-size: 34px; }
+}
+</style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<div class="wrapper">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="logo">LUSH<span class="dot">.</span></div>
+
+    <div class="headline-block">
+      <div class="headline-eyebrow">Nem toda empresa está pronta para crescer</div>
+      <div class="headline-main">
+        <span style="color:var(--branco)">Sua empresa</span><br>
+        <span class="hl-verde">tem o perfil</span><br>
+        <span style="color:var(--branco)">LUSH<span style="color:var(--roxo)">.</span>?</span>
+      </div>
+    </div>
+
+    <div class="intro-card">
+      <p>
+        Trabalhamos com um <strong>número limitado de clientes</strong> para garantir resultados reais.<br><br>
+        Responda 6 perguntas abaixo e descubra se sua empresa tem o perfil ideal para fazer parte da nossa carteira de parceiros.
+      </p>
+    </div>
+  </div>
+
+  <!-- FORM -->
+  <div class="form-card">
+    <div class="card-accent"></div>
+
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span class="progress-label" id="step-topic-top">Maturidade</span>
+        <span class="progress-counter" id="step-counter">1 de 6</span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:0%"></div></div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step active" id="step-1" data-key="estagio">
+      <div class="step-num">1</div>
+      <div class="step-question">Qual é o estágio atual da sua empresa?</div>
+      <div class="step-sub">Queremos entender a maturidade do seu negócio.</div>
+      <div class="options">
+        <button class="opt" data-value="planejando" data-score="1" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Ainda estou planejando abrir</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="ate6m" data-score="1" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Tenho até 6 meses de operação</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="6m2a" data-score="3" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Tenho entre 6 meses e 2 anos</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="mais2a" data-score="5" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Tenho mais de 2 anos e quero crescer</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="consolidada" data-score="5" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Minha empresa já é consolidada e busco escalar</span>
+            
+          </span>
+        </button>
+      </div>
+      <div class="nav">
+        <button class="btn-next" id="btn-1">Próxima →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step" id="step-2" data-key="objetivo">
+      <div class="step-num">2</div>
+      <div class="step-question">Qual é o seu principal objetivo com o marketing?</div>
+      <div class="step-sub">Queremos saber se você busca crescimento ou algo pontual.</div>
+      <div class="options">
+        <button class="opt" data-value="logo" data-score="1" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Apenas criar um logo</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="bonitas" data-score="1" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Quero deixar minhas redes sociais mais bonitas</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="clientes" data-score="5" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Quero atrair mais clientes todos os meses</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="faturamento" data-score="5" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Quero aumentar meu faturamento através do marketing</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="marca" data-score="5" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Quero construir uma marca forte para crescer a longo prazo</span>
+            
+          </span>
+        </button>
+      </div>
+      <div class="nav">
+        <button class="btn-back" onclick="goBack()">← Voltar</button>
+        <button class="btn-next" id="btn-2">Próxima →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step" id="step-3" data-key="orcamento">
+      <div class="step-num">3</div>
+      <div class="step-question">Quanto sua empresa está disposta a investir mensalmente em marketing?</div>
+      <div class="step-sub">Isso nos ajuda a entender o nível de comprometimento com o crescimento.</div>
+      <div class="options">
+        <button class="opt" data-value="ate1500" data-score="1" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Até R$ 1.500</span>
+          </span>
+        </button>
+        <button class="opt" data-value="1500-2000" data-score="3" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Entre R$ 1.500 e R$ 2.000</span>
+          </span>
+        </button>
+        <button class="opt" data-value="2500-3000" data-score="3" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Entre R$ 2.500 e R$ 3.000</span>
+          </span>
+        </button>
+        <button class="opt" data-value="3500-4000" data-score="5" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Entre R$ 3.500 e R$ 4.000</span>
+          </span>
+        </button>
+        <button class="opt" data-value="acima5000" data-score="5" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Acima de R$ 5.000</span>
+          </span>
+        </button>
+      </div>
+      <div class="nav">
+        <button class="btn-back" onclick="goBack()">← Voltar</button>
+        <button class="btn-next" id="btn-3">Próxima →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step" id="step-4" data-key="captacao">
+      <div class="step-num">4</div>
+      <div class="step-question">Como vocês conseguem novos clientes atualmente?</div>
+      <div class="step-sub">Queremos entender sua dependência de indicação e canais de aquisição.</div>
+      <div class="options">
+        <button class="opt" data-value="indicacao" data-score="1" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Apenas indicação</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="redes_sem_estrategia" data-score="1" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Redes sociais sem estratégia</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="trafego" data-score="3" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Tráfego pago</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="estruturado" data-score="5" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Marketing estruturado, mas quero melhorar</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="multicanal" data-score="5" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Utilizamos vários canais e queremos escalar</span>
+            
+          </span>
+        </button>
+      </div>
+      <div class="nav">
+        <button class="btn-back" onclick="goBack()">← Voltar</button>
+        <button class="btn-next" id="btn-4">Próxima →</button>
+      </div>
+    </div>
+
+    <!-- STEP 5 -->
+    <div class="step" id="step-5" data-key="decisao">
+      <div class="step-num">5</div>
+      <div class="step-question">Quem toma as decisões de marketing na empresa?</div>
+      <div class="step-sub">Importante para garantirmos que a conversa chegue a quem decide.</div>
+      <div class="options">
+        <button class="opt" data-value="precisa_consultar" data-score="1" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Ainda preciso conversar com outras pessoas</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="socio" data-score="3" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Um sócio decide</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="gerente" data-score="3" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Meu gerente decide</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="eu_decido" data-score="5" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Eu sou o responsável pela decisão</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="eu_e_socio" data-score="5" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Eu e meu sócio decidimos juntos</span>
+            
+          </span>
+        </button>
+      </div>
+      <div class="nav">
+        <button class="btn-back" onclick="goBack()">← Voltar</button>
+        <button class="btn-next" id="btn-5">Próxima →</button>
+      </div>
+    </div>
+
+    <!-- STEP 6 -->
+    <div class="step" id="step-6" data-key="urgencia">
+      <div class="step-num">6</div>
+      <div class="step-question">Se identificarmos uma oportunidade de crescimento, em quanto tempo você pretende iniciar?</div>
+      <div class="step-sub">Queremos entender sua disposição para agir.</div>
+      <div class="options">
+        <button class="opt" data-value="pesquisando" data-score="1" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Apenas pesquisando por agora</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="6meses" data-score="1" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Talvez nos próximos 6 meses</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="2-3meses" data-score="3" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Entre 2 e 3 meses</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="semanas" data-score="5" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Nas próximas semanas</span>
+            
+          </span>
+        </button>
+        <button class="opt" data-value="imediato" data-score="5" onclick="selectOpt(this)">
+          <span class="opt-check"></span>
+          <span class="opt-body">
+            <span class="opt-title">Quero começar imediatamente</span>
+            
+          </span>
+        </button>
+      </div>
+      <div class="nav">
+        <button class="btn-back" onclick="goBack()">← Voltar</button>
+        <button class="btn-next" id="btn-6">Ver meu resultado →</button>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result-screen" id="result-screen">
+
+      <div class="result-hero">
+        <div class="result-score-ring" id="score-ring">
+          <svg viewBox="0 0 88 88">
+            <circle class="ring-bg" cx="44" cy="44" r="38"/>
+            <circle class="ring-fill" id="ring-fill" cx="44" cy="44" r="38"
+              stroke-dasharray="238.76"
+              stroke-dashoffset="238.76"/>
+          </svg>
+          <span class="score-number" id="score-display">0</span>
+          <span class="score-max">/ 30</span>
+        </div>
+
+        <div class="result-tag" id="result-tag">Analisando...</div>
+        <div class="result-title" id="result-title"></div>
+        <p class="result-msg" id="result-msg"></p>
+      </div>
+
+      <div class="next-block" id="next-block">
+        <div class="next-label">Próximos passos</div>
+        <div id="next-items"></div>
+      </div>
+
+      <a class="cta-btn cta-primary" id="cta-btn" href="#" target="_blank" rel="noopener noreferrer">
+        Quero conversar com a LUSH. →
+      </a>
+      <p class="cta-note" id="cta-note">Sem compromisso. Nossa equipe entra em contato em até 24h.</p>
+
+    </div>
+
+  </div><!-- /form-card -->
+
+  <footer class="site-footer">LUSH. Marketing — Brasília, DF</footer>
+
+</div><!-- /wrapper -->
+
+<script>
+  const answers = {};
+  let scores = [];
+  let currentStep = 1;
+  const totalSteps = 6;
+  const topics = ['Maturidade','Objetivo','Orçamento','Captação','Decisão','Urgência'];
+
+  function updateUI() {
+    document.getElementById('step-topic-top').textContent = topics[currentStep - 1];
+    document.getElementById('step-counter').textContent = currentStep + ' de ' + totalSteps;
+    var pct = ((currentStep - 1) / totalSteps) * 100;
+    document.getElementById('progress-fill').style.width = pct + '%';
+  }
+
+  function selectOpt(btn) {
+    var stepEl = btn.closest('.step');
+    stepEl.querySelectorAll('.opt').forEach(function(o) { o.classList.remove('selected'); });
+    btn.classList.add('selected');
+    var key = stepEl.dataset.key;
+    answers[key] = btn.dataset.value;
+    scores[currentStep - 1] = parseInt(btn.dataset.score);
+    var btnNext = document.getElementById('btn-' + currentStep);
+    if (btnNext) btnNext.classList.add('ready');
+  }
+
+  function goBack() {
+    if (currentStep <= 1) return;
+    document.getElementById('step-' + currentStep).classList.remove('active');
+    currentStep--;
+    document.getElementById('step-' + currentStep).classList.add('active');
+    updateUI();
+  }
+
+  document.querySelectorAll('.btn-next').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      if (!this.classList.contains('ready')) return;
+      document.getElementById('step-' + currentStep).classList.remove('active');
+      if (currentStep < totalSteps) {
+        currentStep++;
+        document.getElementById('step-' + currentStep).classList.add('active');
+        updateUI();
+      } else {
+        document.getElementById('progress-fill').style.width = '100%';
+        showResult();
+      }
+    });
+  });
+
+  function getTotalScore() {
+    return scores.reduce(function(a, b) { return a + (b || 0); }, 0);
+  }
+
+  function animateScore(target) {
+    var el = document.getElementById('score-display');
+    var ring = document.getElementById('ring-fill');
+    var circumference = 238.76;
+    var pct = target / 30;
+    var offset = circumference - (pct * circumference);
+    var current = 0;
+    var step = target / 40;
+    var interval = setInterval(function() {
+      current += step;
+      if (current >= target) { current = target; clearInterval(interval); }
+      el.textContent = Math.round(current);
+    }, 30);
+    setTimeout(function() {
+      ring.style.strokeDashoffset = offset;
+    }, 100);
+  }
+
+  function showResult() {
+    document.querySelectorAll('.step').forEach(function(s) { s.classList.remove('active'); });
+    var rs = document.getElementById('result-screen');
+    rs.classList.add('active');
+    document.getElementById('step-topic-top').textContent = 'Resultado';
+    document.getElementById('step-counter').textContent = 'Concluído';
+
+    var total = getTotalScore();
+
+    var results = {
+      high: {
+        tag: '✦ Perfil Ideal',
+        tagClass: 'tag-green',
+        title: 'Sua empresa tem o perfil LUSH.',
+        msg: 'Excelente. Sua empresa possui maturidade, objetivo claro e disposição para crescer. Nossa equipe entrará em contato para agendar uma reunião estratégica sem compromisso.',
+        ringColor: '#b0f800',
+        blockClass: 'next-block-a',
+        items: [
+          { icon: '✦', iconClass: 'icon-green', text: 'Reunião estratégica com nosso time em até 24h' },
+          { icon: '→', iconClass: 'icon-green', text: 'Diagnóstico personalizado do seu negócio' },
+          { icon: '◎', iconClass: 'icon-green', text: 'Proposta comercial sob medida para seu objetivo' }
+        ],
+        cta: 'Agendar reunião estratégica →',
+        ctaClass: 'cta-primary',
+        note: 'Vagas limitadas. Nossa equipe entrará em contato em até 24h.',
+        msg_wa: 'Olá! Acabei de preencher a qualificação da Lush e estou apto a ser cliente de vocês. Quero agendar uma reunião estratégica.'
+      },
+      mid: {
+        tag: '◎ Bom potencial',
+        tagClass: 'tag-purple',
+        title: 'Sua empresa tem bom potencial',
+        msg: 'Você está no caminho certo. Temos oportunidades que podem se encaixar no seu momento atual. Vamos analisar seu caso e verificar como podemos ajudar.',
+        ringColor: '#9210FF',
+        blockClass: 'next-block-b',
+        items: [
+          { icon: '→', iconClass: 'icon-purple', text: 'Nossa equipe vai analisar seu perfil detalhadamente' },
+          { icon: '◎', iconClass: 'icon-purple', text: 'Entraremos em contato para entender melhor seu negócio' },
+          { icon: '✦', iconClass: 'icon-purple', text: 'Se houver fit, apresentaremos uma proposta' }
+        ],
+        cta: 'Quero ser analisado →',
+        ctaClass: 'cta-primary',
+        note: 'Retorno em até 48h após a análise do seu perfil.',
+        msg_wa: 'Olá! Preenchi a qualificação da Lush e gostaria de saber mais sobre como vocês podem ajudar minha empresa a crescer.'
+      },
+      low: {
+        tag: '— Em desenvolvimento',
+        tagClass: 'tag-gray',
+        title: 'Ainda não é o momento ideal',
+        msg: 'No momento, a parceria com a Lush pode não ser o melhor investimento para o seu estágio. Mas isso muda. Continuaremos compartilhando conteúdos e, quando sua empresa estiver pronta, teremos prazer em conversar.',
+        ringColor: '#5A4685',
+        blockClass: 'next-block-c',
+        items: [
+          { icon: '→', iconClass: 'icon-gray', text: 'Siga nosso perfil para conteúdos gratuitos de marketing' },
+          { icon: '◎', iconClass: 'icon-gray', text: 'Quando seu negócio evoluir, volte para um novo diagnóstico' },
+          { icon: '✦', iconClass: 'icon-gray', text: 'Temos materiais que podem ajudar no seu estágio atual' }
+        ],
+        cta: 'Acompanhar conteúdo da LUSH. →',
+        ctaClass: 'cta-secondary-btn',
+        note: 'Fique de olho no nosso conteúdo. Quando chegar a hora, estaremos aqui.',
+        msg_wa: 'Olá! Preenchi a qualificação da Lush. Sei que ainda não é o momento ideal, mas gostaria de acompanhar os conteúdos de vocês.'
+      }
+    };
+
+    var key = total >= 25 ? 'high' : total >= 18 ? 'mid' : 'low';
+    var data = results[key];
+
+    // Score ring color
+    document.getElementById('ring-fill').style.stroke = data.ringColor;
+    animateScore(total);
+
+    // Tag
+    var tagEl = document.getElementById('result-tag');
+    tagEl.textContent = data.tag;
+    tagEl.className = 'result-tag ' + data.tagClass;
+
+    document.getElementById('result-title').textContent = data.title;
+    document.getElementById('result-msg').textContent = data.msg;
+
+    // Next block
+    document.getElementById('next-block').className = 'next-block ' + data.blockClass;
+    var ni = document.getElementById('next-items');
+    ni.innerHTML = '';
+    data.items.forEach(function(item) {
+      var d = document.createElement('div');
+      d.className = 'next-item';
+      d.innerHTML = '<span class="next-icon ' + item.iconClass + '">' + item.icon + '</span>' + item.text;
+      ni.appendChild(d);
+    });
+
+    // CTA
+    var ctaEl = document.getElementById('cta-btn');
+    ctaEl.textContent = data.cta;
+    ctaEl.className = 'cta-btn ' + data.ctaClass;
+    ctaEl.href = 'https://wa.me/5561996104200?text=' + encodeURIComponent(data.msg_wa);
+
+    document.getElementById('cta-note').textContent = data.note;
+  }
+</script>
+</body>
+</html>
